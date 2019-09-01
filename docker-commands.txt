@@ -1,0 +1,8 @@
+ # redis
+ docker run --name local-redis -d redis redis-server --appendonly yes
+
+ # bash
+ docker exec -it some-redis bash
+
+ # webapi
+ docker run -d -p 8080:80 jmulla1/hardy

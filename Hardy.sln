@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardy.WebApi", "Hardy.WebApi\Hardy.WebApi.csproj", "{3369AE7F-A4DF-47FB-977A-CB705B635B5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardy.Common", "Hardy.Common\Hardy.Common.csproj", "{8BF821F8-36E5-448D-AEAC-5AAD700C02D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardy.Gateways", "Hardy.Gateways\Hardy.Gateways.csproj", "{D6A068A6-5616-4734-9EFD-2B845F7CF4F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Common", "1 Common", "{3E39230D-F5C2-4DF2-95FA-37D25CF668F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Environment", "0 Environment", "{D918020B-80C4-489F-B190-8ADEC9018A68}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Presentation", "2 Presentation", "{4F76BFF7-A0D0-4897-A497-AEF97F28CB2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 Gateways", "4 Gateways", "{2331AC26-D992-4546-AFBE-744295BD72C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Application", "3 Application", "{FA30E682-D11C-4F49-8EF3-DC54870F80BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardy.Application", "Hardy.Application\Hardy.Application.csproj", "{447C2399-0781-40D1-9D8B-818E7783BE00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3369AE7F-A4DF-47FB-977A-CB705B635B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3369AE7F-A4DF-47FB-977A-CB705B635B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3369AE7F-A4DF-47FB-977A-CB705B635B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3369AE7F-A4DF-47FB-977A-CB705B635B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF821F8-36E5-448D-AEAC-5AAD700C02D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF821F8-36E5-448D-AEAC-5AAD700C02D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF821F8-36E5-448D-AEAC-5AAD700C02D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF821F8-36E5-448D-AEAC-5AAD700C02D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A068A6-5616-4734-9EFD-2B845F7CF4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A068A6-5616-4734-9EFD-2B845F7CF4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A068A6-5616-4734-9EFD-2B845F7CF4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A068A6-5616-4734-9EFD-2B845F7CF4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447C2399-0781-40D1-9D8B-818E7783BE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447C2399-0781-40D1-9D8B-818E7783BE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447C2399-0781-40D1-9D8B-818E7783BE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447C2399-0781-40D1-9D8B-818E7783BE00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3369AE7F-A4DF-47FB-977A-CB705B635B5D} = {4F76BFF7-A0D0-4897-A497-AEF97F28CB2B}
+		{8BF821F8-36E5-448D-AEAC-5AAD700C02D2} = {3E39230D-F5C2-4DF2-95FA-37D25CF668F0}
+		{D6A068A6-5616-4734-9EFD-2B845F7CF4F8} = {2331AC26-D992-4546-AFBE-744295BD72C4}
+		{447C2399-0781-40D1-9D8B-818E7783BE00} = {FA30E682-D11C-4F49-8EF3-DC54870F80BF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B25B6BE-AAB9-4128-8D17-21BA0B4BFF95}
+	EndGlobalSection
+EndGlobal
