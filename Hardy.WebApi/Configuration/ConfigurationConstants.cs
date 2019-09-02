@@ -10,6 +10,8 @@
 
             public static string Units => AddPrefix("Units");
 
+            public static string CityId => AddPrefix("CityId");
+
             private static string AddPrefix(string key) => $"{Prefix}:{key}";
         }
 

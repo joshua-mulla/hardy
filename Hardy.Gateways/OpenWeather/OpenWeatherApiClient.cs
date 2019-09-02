@@ -19,7 +19,8 @@ namespace Hardy.Gateways.OpenWeather
         public async Task<Result<CurrentWeatherResponse>> GetCurrentWeatherAsync()
         {
             var request = new OpenWeatherMapRequestBuilder(OpenWeatherMapConstants.ResourceKeys.Weather, _config.ApiKey)
-                .AddParameter(OpenWeatherMapConstants.QueryParamKeys.CityId, "5308655")
+                .AddParameter(OpenWeatherMapConstants.QueryParamKeys.CityId, _config.CityId)
+                .AddParameter(OpenWeatherMapConstants.QueryParamKeys.Units, _config.Units)
                 .Build();
             var rawResponse = await _client.GetAsync(request);
             if (rawResponse.IsSuccessStatusCode)
@@ -27,12 +28,7 @@ namespace Hardy.Gateways.OpenWeather
                 return await DeserializeAsync<CurrentWeatherResponse>(rawResponse);
             }
 
-            return null;
-        }
-
-        public Task<Result<ForecastResponse>> GetForecastAsync()
-        {
-            throw new System.NotImplementedException();
+            return new Result<CurrentWeatherResponse>($"Failed to retrieve current weather from Open Weather API. Status code: {rawResponse.StatusCode}");
         }
     }
 }

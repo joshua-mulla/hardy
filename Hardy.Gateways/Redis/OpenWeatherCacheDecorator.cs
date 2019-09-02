@@ -1,24 +1,40 @@
 ﻿using Hardy.Common;
 using Hardy.Common.Responses.OpenWeatherMap;
+using Hardy.Gateways.OpenWeather;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Hardy.Gateways.Redis
 {
-    public class WeatherCacheManager : IWeatherCacheManager
+    public class OpenWeatherCacheDecorator : IOpenWeatherApiClient
     {
         private readonly IRedisDataAgent _redisDataAgent;
+        private readonly OpenWeatherApiClient _openWeatherApiClient;
 
-        public WeatherCacheManager(IRedisDataAgent redisDataAgent)
+        public OpenWeatherCacheDecorator(IRedisDataAgent redisDataAgent, OpenWeatherApiClient openWeatherApiClient)
         {
             _redisDataAgent = redisDataAgent;
+            _openWeatherApiClient = openWeatherApiClient;
+        }
+
+        public async Task<Result<CurrentWeatherResponse>> GetCurrentWeatherAsync()
+        {
+            var cachedCurrentWeather = await GetCurrentWeatherFromCache();
+            if(cachedCurrentWeather.Succeeded && cachedCurrentWeather.Content != null)
+            {
+                return cachedCurrentWeather;
+            }
+            
+            var currentWeather = await _openWeatherApiClient.GetCurrentWeatherAsync();
+            await SetCurrentWeatherAsync(cachedCurrentWeather.Content);
+
+            return currentWeather;
         }
 
         private const string CURRENT_WEATHER_KEY = "CurrentWeather";
-        public async Task<Result<CurrentWeatherResponse>> GetCurrentWeatherAsync()
+
+        public async Task<Result<CurrentWeatherResponse>> GetCurrentWeatherFromCache()
         {
             try
             {
@@ -39,7 +55,7 @@ namespace Hardy.Gateways.Redis
 
         public async Task<bool> SetCurrentWeatherAsync(CurrentWeatherResponse currentWeatherResponse)
         {
-            return await _redisDataAgent.SetStringValueAsync(CURRENT_WEATHER_KEY, JsonConvert.SerializeObject(currentWeatherResponse));
+            return await _redisDataAgent.SetStringValueAsync(CURRENT_WEATHER_KEY, JsonConvert.SerializeObject(currentWeatherResponse), TimeSpan.FromMinutes(30));
         }
     }
 }

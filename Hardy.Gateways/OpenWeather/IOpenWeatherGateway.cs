@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Hardy.Common;
-using Hardy.Common.Responses.OpenWeatherMap;
+using Hardy.Domain.Weather;
 
 namespace Hardy.Gateways.OpenWeather
 {
     public interface IOpenWeatherGateway
     {
-        Task<Result<CurrentWeatherResponse>> GetCurrentWeatherAsync();
+        Task<Result<DomainWeather>> GetCurrentWeatherAsync();
     }
 }

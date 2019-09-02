@@ -26,13 +26,18 @@ namespace Hardy.WebApi.Configuration
             {
                 ApiKey = configuration[ConfigurationConstants.OpenWeatherMap.ApiKey],
                 BaseAddress = configuration[ConfigurationConstants.OpenWeatherMap.BaseAddress],
-                Units = configuration[ConfigurationConstants.OpenWeatherMap.Units]
+                Units = configuration[ConfigurationConstants.OpenWeatherMap.Units],
+                CityId = configuration[ConfigurationConstants.OpenWeatherMap.CityId]
             });
 
-            services.AddHttpClient<IOpenWeatherApiClient, OpenWeatherApiClient>();
+            services.AddHttpClient<OpenWeatherApiClient>();
+            services.AddSingleton<OpenWeatherApiClientFactory>();
+            services.AddSingleton<IOpenWeatherApiClient>(sp => sp.GetService<OpenWeatherApiClientFactory>().Create());
             services.AddSingleton(new RedisConnectionFactory(configuration[ConfigurationConstants.RedisConnection]));
-            services.AddSingleton<IRedisDataAgent, RedisDataAgent>();
-            services.AddSingleton<IWeatherCacheManager, WeatherCacheManager>();
+            
+            
+            
+            //services.AddSingleton<IOpenWeatherApiClient>(sp => new OpenWeatherCacheDecorator(sp.GetService<IRedisDataAgent>(), sp.GetService<OpenWeatherApiClient>()));
             services.AddSingleton<IWeatherService, WeatherService>();
             services.AddSingleton<IOpenWeatherGateway, OpenWeatherGateway>();
         }

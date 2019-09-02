@@ -8,3 +8,7 @@
 /Hardy.Gateways/obj
 /Hardy.Gateways/Hardy.Gateways.csproj.user
 /Hardy.WebApi/bin/Release/netcoreapp2.2
+/Hardy.Application/bin/Debug/netstandard2.0
+/Hardy.Gateways/bin/Debug/netstandard2.0
+/Hardy.Domain/bin/Debug/netstandard2.0
+/Hardy.Domain/obj

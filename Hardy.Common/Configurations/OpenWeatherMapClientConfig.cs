@@ -9,5 +9,6 @@ namespace Hardy.Common.Configurations
         public string ApiKey { get; set; }
         public string BaseAddress { get; set; }
         public string Units { get; set; }
+        public string CityId { get; set; }
     }
 }

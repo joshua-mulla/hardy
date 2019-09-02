@@ -7,6 +7,5 @@ namespace Hardy.Gateways.OpenWeather
     public interface IOpenWeatherApiClient
     {
         Task<Result<CurrentWeatherResponse>> GetCurrentWeatherAsync();
-        Task<Result<ForecastResponse>> GetForecastAsync();
     }
 }

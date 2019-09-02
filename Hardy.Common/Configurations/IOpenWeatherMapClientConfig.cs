@@ -4,5 +4,7 @@
     {
         string ApiKey { get; set; }
         string BaseAddress { get; set; }
+        string Units { get; set; }
+        string CityId { get; set; }
     }
 }

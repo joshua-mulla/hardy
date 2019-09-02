@@ -29,9 +29,8 @@ namespace Hardy.Gateways.MicroserviceClients
             }
             catch (Exception ex)
             {
-                return new Result<T>(ex.ToString());
+                return new Result<T>($"Error deserializing response: {ex}");
             }
         }
-
     }
 }

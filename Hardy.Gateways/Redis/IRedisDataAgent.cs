@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Hardy.Gateways.Redis
 {
@@ -6,6 +7,6 @@ namespace Hardy.Gateways.Redis
     {
         Task<bool> DeleteStringValueAsync(string key);
         Task<string> GetStringValueAsync(string key);
-        Task<bool> SetStringValueAsync(string key, string value);
+        Task<bool> SetStringValueAsync(string key, string value, TimeSpan expiration);
     }
 }

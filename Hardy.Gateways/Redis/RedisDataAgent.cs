@@ -21,9 +21,9 @@ namespace Hardy.Gateways.Redis
             return await _database.StringGetAsync(key);
         }
 
-        public Task<bool> SetStringValueAsync(string key, string value)
+        public Task<bool> SetStringValueAsync(string key, string value, TimeSpan expiration)
         {
-            return _database.StringSetAsync(key, value, TimeSpan.FromMinutes(30));
+            return _database.StringSetAsync(key, value, expiration);
         }
 
         public Task<bool> DeleteStringValueAsync(string key)

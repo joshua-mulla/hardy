@@ -1,5 +1,5 @@
 ﻿using Hardy.Common;
-using Hardy.Common.Responses.OpenWeatherMap;
+using Hardy.Domain.Weather;
 using Hardy.Gateways.OpenWeather;
 using System.Threading.Tasks;
 
@@ -7,16 +7,16 @@ namespace Hardy.Application
 {
     public class WeatherService : IWeatherService
     {
-        private readonly IOpenWeatherGateway openWeatherGateway;
+        private readonly IOpenWeatherGateway _openWeatherGateway;
 
         public WeatherService(IOpenWeatherGateway openWeatherGateway)
         {
-            this.openWeatherGateway = openWeatherGateway;
+            _openWeatherGateway = openWeatherGateway;
         }
 
-        public async Task<Result<CurrentWeatherResponse>> GetWeatherAsync()
+        public async Task<Result<DomainWeather>> GetWeatherAsync()
         {
-            return await openWeatherGateway.GetCurrentWeatherAsync();
+            return await _openWeatherGateway.GetCurrentWeatherAsync();
         }
     }
 }
