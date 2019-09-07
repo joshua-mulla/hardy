@@ -8,6 +8,7 @@ COPY Hardy.Common/*.csproj ./Hardy.Common/
 COPY Hardy.WebApi/*.csproj ./Hardy.WebApi/
 COPY Hardy.Application/*.csproj ./Hardy.Application/
 COPY Hardy.Gateways/*.csproj ./Hardy.Gateways/
+COPY Hardy.Domain/*.csproj ./Hardy.Domain/
 RUN dotnet restore 
 
 # Copy everything else and build
@@ -22,6 +23,9 @@ WORKDIR /src/Hardy.Gateways/
 RUN dotnet publish -c Release -o /app
 
 WORKDIR /src/Hardy.Application/
+RUN dotnet publish -c Release -o /app
+
+WORKDIR /src/Hardy.Domain/
 RUN dotnet publish -c Release -o /app
 
 FROM build AS publish

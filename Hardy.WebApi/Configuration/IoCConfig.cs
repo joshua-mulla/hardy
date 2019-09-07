@@ -21,10 +21,9 @@ namespace Hardy.WebApi.Configuration
                 durationOfBreak: TimeSpan.FromMinutes(1)
             );
 
-            
             services.AddSingleton<IOpenWeatherMapClientConfig>(new OpenWeatherMapClientConfig
             {
-                ApiKey = configuration[ConfigurationConstants.OpenWeatherMap.ApiKey],
+                ApiKey = Environment.GetEnvironmentVariable("API_KEY"),
                 BaseAddress = configuration[ConfigurationConstants.OpenWeatherMap.BaseAddress],
                 Units = configuration[ConfigurationConstants.OpenWeatherMap.Units],
                 CityId = configuration[ConfigurationConstants.OpenWeatherMap.CityId]
@@ -34,8 +33,6 @@ namespace Hardy.WebApi.Configuration
             services.AddSingleton<OpenWeatherApiClientFactory>();
             services.AddSingleton<IOpenWeatherApiClient>(sp => sp.GetService<OpenWeatherApiClientFactory>().Create());
             services.AddSingleton(new RedisConnectionFactory(configuration[ConfigurationConstants.RedisConnection]));
-            
-            
             
             //services.AddSingleton<IOpenWeatherApiClient>(sp => new OpenWeatherCacheDecorator(sp.GetService<IRedisDataAgent>(), sp.GetService<OpenWeatherApiClient>()));
             services.AddSingleton<IWeatherService, WeatherService>();
